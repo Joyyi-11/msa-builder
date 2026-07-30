@@ -56,6 +56,7 @@ Moqi（默契）是一套让人与 AI 建立共同上下文、协作边界和持
 
 {{CONDITIONAL_ROUTES}}
 
+- 接入新 Agent 或维护平台薄适配器：`references/adapter.md`。
 - 精确触发 `[对齐]`：读取 `ALIGNMENT.md`。
 
 没有按需细则时删除未使用的路由和占位符，不创建空 reference。

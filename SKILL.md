@@ -1,6 +1,6 @@
 ---
 name: moqi-builder
-description: 搭建、更新、诊断和对齐 Moqi（默契）人机协作系统。通过对话提炼必要的协作事实、稳定思维模式、协作关系和运行边界，并组织为 AGENTS.md、Memory.md、Soul.md、Agent.md、按需 references 和 ALIGNMENT.md。Use when the user asks to搭建个人 AI 协作系统、让 AI 持续了解自己、配置或整理 AGENTS.md/CLAUDE.md、创建或更新 Memory/Soul/Agent、检查规则重复和过期，或执行系统对齐。
+description: 搭建、更新、诊断和对齐 Moqi（默契）人机协作系统。适用于用户想创建个人 AI 协作系统、整理 AGENTS.md 和平台适配器、维护 Memory/Soul/Agent、检查规则重复或过期，或执行全局对齐。
 ---
 
 # Moqi（默契）Builder
@@ -16,7 +16,7 @@ Moqi（默契）是一套让人与 AI 建立共同上下文、协作边界和持
 | 检查重复、过期、越界或失效路由 | `diagnose` | `references/diagnose.md` |
 | 全局同步、清理并形成闭环 | `align` | `references/alignment.md` |
 
-文件归属或架构判断不清时，同时读取 `references/architecture.md`。
+文件归属或架构判断不清时，同时读取 `references/architecture.md`；接入新 Agent 见 `references/adapter.md`。
 
 ## 核心架构
 
@@ -47,6 +47,13 @@ ALIGNMENT.md       对齐控制平面
 5. 通过对话形成内容，不把模板占位符直接当作用户答案。
 6. 运行 `scripts/verify_system.py <instance-root>`，修复全部 error。
 7. 汇报实际改动、验证结果、未确认判断和旧路径状态。
+
+## 完成标准
+
+- `build`：目标实例具备入口、MSA、必要 references、`ALIGNMENT.md` 和验证脚本；用户确认没有模板占位符被当作真实答案。
+- `update`：新信息已放入唯一合适位置；相邻文件没有重复或冲突。
+- `diagnose`：按风险列出问题、证据、归属和处理建议；诊断模式不自动修改文件。
+- `align`：已完成分流、去重、结构验证和范围明确的本地提交边界；未获授权的旧源不删除。
 
 ## 安全规则
 

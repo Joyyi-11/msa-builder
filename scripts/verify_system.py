@@ -70,11 +70,14 @@ def validate(root: Path, allow_placeholders: bool) -> tuple[list[str], list[str]
             if count > 150:
                 warnings.append(f"{path.name} has {count} lines; recommended limit is 150")
 
-    claude_path = root / "entrypoints/CLAUDE.md"
-    if claude_path.is_file():
-        claude = read_text(claude_path).replace("\\", "/")
-        if "entrypoints/AGENTS.md" not in claude:
-            errors.append("CLAUDE.md does not route to AGENTS.md")
+    entrypoints_dir = root / "entrypoints"
+    if entrypoints_dir.is_dir():
+        for adapter in sorted(entrypoints_dir.glob("*.md")):
+            if adapter.name == "AGENTS.md":
+                continue
+            text = read_text(adapter).replace("\\", "/")
+            if "entrypoints/AGENTS.md" not in text:
+                errors.append(f"{adapter.name} does not route to AGENTS.md")
 
     if not allow_placeholders:
         for path in root.rglob("*.md"):

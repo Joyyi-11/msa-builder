@@ -99,7 +99,7 @@
 
 1. 从 `assets/templates/` 选择核心骨架，不整目录盲目复制。
 2. 依据确认内容替换或删除占位符，不保留无意义空章节。
-3. 只为用户实际使用的平台生成适配器；Claude Code 可选用 `assets/adapters/CLAUDE.md`。
+3. 为每个实际使用的 Agent 生成薄适配器，标准流程见 `references/adapter.md`；可复制 `assets/adapters/` 下的对应示例填充占位符，不整目录盲目复制。
 4. 将 `scripts/verify_system.py` 复制到实例的 `scripts/verify_system.py`。
 5. 如果存在 references，为每个文件添加唯一、清晰的 `AGENTS.md` 路由。
 6. 写入后逐份回读，确认没有推测被写成事实。
